@@ -1,0 +1,147 @@
+// Vértice Imóveis — database schema (SQLite for local demo)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Agent {
+  id           String        @id @default(cuid())
+  name         String
+  role         String
+  email        String
+  phone        String
+  whatsapp     String
+  avatar       String
+  bio          String
+  properties   Property[]
+  appointments Appointment[]
+}
+
+model Property {
+  id               String        @id @default(cuid())
+  slug             String        @unique
+  reference        String        @unique
+  title            String
+  shortDescription String
+  description      String
+  price            Int
+  previousPrice    Int?
+  purpose          String // "buy" | "rent"
+  type             String // "apartment" | "house" | "penthouse" | "studio" | "townhouse"
+  neighborhood     String
+  city             String
+  address          String
+  bedrooms         Int
+  bathrooms        Int
+  parking          Int
+  area             Int
+  yearBuilt        Int?
+  condoFee         Int?
+  tax              Int?
+  featured         Boolean       @default(false)
+  status           String        @default("available")
+  amenities        String // JSON string[]
+  images           String // JSON string[]
+  lat              Float?
+  lng              Float?
+  agentId          String
+  agent            Agent         @relation(fields: [agentId], references: [id])
+  createdAt        DateTime      @default(now())
+  leads            Lead[]
+  appointments     Appointment[]
+}
+
+model Lead {
+  id                String            @id @default(cuid())
+  name              String
+  email             String?
+  phone             String?
+  intent            String?
+  propertyType      String?
+  preferredLocation String?
+  budgetMin         Int?
+  budgetMax         Int?
+  bedrooms          Int?
+  timeline          String?
+  financingStatus   String?
+  marketingConsent  Boolean           @default(false)
+  score             Int               @default(0)
+  classification    String            @default("NEW") // "HOT" | "WARM" | "NURTURE" | "NEW"
+  status            String            @default("NEW") // "NEW" | "CONTACTED" | "SCHEDULED" | "NURTURE"
+  source            String // "AI_CHATBOT" | "PROPERTY_PAGE" | "CONTACT_PAGE" | "SCHEDULE_PAGE"
+  notes             String?
+  aiSummary         String?
+  scoreReasons      String? // JSON string[]
+  matchedIds        String? // JSON string[] of property ids
+  propertyId        String?
+  property          Property?         @relation(fields: [propertyId], references: [id])
+  appointments      Appointment[]
+  events            AutomationEvent[]
+  conversations     Conversation[]
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+}
+
+model Appointment {
+  id         String     @id @default(cuid())
+  code       String     @unique
+  slotKey    String?    @unique
+  leadId     String
+  lead       Lead       @relation(fields: [leadId], references: [id])
+  propertyId String
+  property   Property   @relation(fields: [propertyId], references: [id])
+  agentId    String
+  agent      Agent      @relation(fields: [agentId], references: [id])
+  date       String // ISO date YYYY-MM-DD
+  time       String // HH:mm
+  status     String     @default("PENDING") // "PENDING" | "CONFIRMED" | "CANCELLED" | "DONE"
+  notes      String?
+  createdAt  DateTime   @default(now())
+}
+
+model Conversation {
+  id        String    @id @default(cuid())
+  sessionId String    @unique
+  lastRequestId String?
+  lastResponse String?
+  state     String // JSON QualificationState
+  leadId    String?
+  lead      Lead?     @relation(fields: [leadId], references: [id])
+  messages  Message[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Message {
+  id             String       @id @default(cuid())
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  role           String // "user" | "assistant"
+  content        String
+  createdAt      DateTime     @default(now())
+}
+
+model AutomationEvent {
+  id        String   @id @default(cuid())
+  type      String // e.g. "lead_created", "whatsapp_agent_alert", ...
+  label     String
+  detail    String?
+  leadId    String?
+  lead      Lead?    @relation(fields: [leadId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String?
+  subject   String?
+  message   String
+  createdAt DateTime @default(now())
+}

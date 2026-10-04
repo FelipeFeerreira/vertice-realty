@@ -1,0 +1,35 @@
+name: Verify application
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: cp .env.example .env
+      - run: npm run db:setup
+      - run: npm test
+      - run: npm run lint
+      - run: npm run build
+      - run: npm run typecheck
+      - name: Test complete application flows
+        run: |
+          npm run start -- --port 3001 > /tmp/vertice-server.log 2>&1 &
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent http://localhost:3001/api/properties > /dev/null; then break; fi
+            sleep 2
+          done
+          npm run test:flows
