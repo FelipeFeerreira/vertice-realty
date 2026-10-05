@@ -53,6 +53,11 @@ export default function RootLayout({
           <Suspense fallback={<div className="h-[68px] border-b border-line bg-ivory lg:h-[108px]" />}>
             <Header />
           </Suspense>
+          {process.env.NEXT_PUBLIC_DEMO_MODE === "true" && (
+            <div className="border-b border-line bg-champagne px-5 py-2 text-center text-xs leading-relaxed text-ink-soft">
+              Interactive portfolio demo. Use fictional contact details. Entries are visible in the demo dashboard. Messages and calendar delivery are simulated.
+            </div>
+          )}
           <main id="conteudo" className="flex-1">
             {children}
           </main>

@@ -24,7 +24,7 @@ export const BRAND = {
 } as const;
 
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+  process.env.NEXT_PUBLIC_SITE_URL ?? (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "http://localhost:3000");
 
 // ── Property taxonomy ────────────────────────────────────────────────────
 export const PROPERTY_TYPE_LABELS: Record<PropertyType, string> = {

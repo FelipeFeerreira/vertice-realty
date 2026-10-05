@@ -1,0 +1,11 @@
+.env*
+!.env.example
+prisma/*.db*
+prisma/*.sqlite*
+prisma/schema.cloud.prisma
+portfolio
+tests
+node_modules
+.next
+*.log
+*.tsbuildinfo

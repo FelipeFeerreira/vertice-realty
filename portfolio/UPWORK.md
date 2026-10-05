@@ -1,15 +1,15 @@
 # Upwork portfolio entry
 
 ## Project title
-AI Real Estate Website & Lead Qualification CRM
+AI Real Estate Website, Lead Qualification & CRM
 
-## My role
-Full-stack developer, UI/UX designer & automation engineer
+## Your role
+Full-Stack Developer | UI/UX Designer | Automation Engineer
 
-## Project description
-Built a premium real estate platform that turns property searches into structured sales opportunities. Visitors browse and save homes, talk to an AI-style concierge, receive inventory-based recommendations and book viewings. Agents receive lead scores, client requirements and activity history in a working CRM. Includes consent-based nurturing and integration-ready WhatsApp, email and calendar workflows. Built with Next.js, TypeScript, Prisma and SQLite. Fictional portfolio demonstration; external messaging is simulated without configured integrations.
+## Project description (508 characters)
+I designed and built a real estate platform that turns property searches into qualified leads. Visitors browse homes, chat with a guided concierge, receive matching listings and book viewings. Agents manage budgets, timelines, lead scores and follow-ups in a CRM dashboard. Built with Next.js, TypeScript, Prisma and PostgreSQL, with optional AI reply generation, consent-based nurturing and integration-ready WhatsApp, email and calendar workflows. Fictional portfolio demo; external messaging is simulated.
 
-## Skills and deliverables
+## Skills and deliverables (choose five)
 - Full-Stack Development
 - Next.js
 - TypeScript
@@ -22,7 +22,7 @@ Built a premium real estate platform that turns property searches into structure
 Real estate inquiry forms often leave agents with little context about budget, urgency or preferred location. Prospects then wait while teams manually qualify each inquiry.
 
 ### Solution
-I designed an editorial property website and built a progressive concierge that captures requirements one question at a time. Deterministic matching finds real inventory, while a centralized scoring engine separates sales-ready conversations from early-stage interest. Viewing requests and agent notes persist in a local database.
+I designed an editorial property website and built a progressive concierge that captures requirements one question at a time. Deterministic matching finds real inventory, while a centralized scoring engine separates sales-ready conversations from early-stage interest. Viewing requests and agent notes persist in PostgreSQL online, with SQLite retained for local development.
 
 ### What I implemented
 Responsive browsing and filters, detailed property galleries, local favorites, a stateful concierge with editable answers, lead scoring, booking conflict protection, a CRM dashboard, consent-based nurturing and webhook adapters for automation platforms.
@@ -31,15 +31,20 @@ Responsive browsing and filters, detailed property galleries, local favorites, a
 A complete, demonstrable visitor-to-agent workflow. Designed to reduce manual qualification and improve the context available before first contact. This is a fictional demonstration, so no client conversion or revenue metrics are claimed.
 
 ## Suggested image order
-1. 01-cover.png
-2. 02-homepage.png
-3. 03-property-search.png
-4. 04-property-detail.png
-5. 05-ai-concierge.png
-6. 06-agent-dashboard.png
-7. 07-booking.png
-8. 08-automation.png
-9. 09-mobile.png
+1. 01-cover.png - use as the project thumbnail
+2. 02-homepage.png - premium visual design
+3. 05-ai-concierge.png - conversational qualification and recommendations
+4. 06-agent-dashboard.png - structured leads and business workflow
+5. 03-property-search.png - working search and filters
+6. 04-property-detail.png - gallery, specifications and inquiry
+7. 07-booking.png - viewing scheduling
+8. 08-automation.png - agent handoff and nurture routes
+9. 09-mobile.png - responsive experience
+
+## Link order
+1. [Live website](https://vertice-realty.vercel.app) - let clients test the experience first.
+2. [Agent dashboard](https://vertice-realty.vercel.app/dashboard?lead=lead-daniel) - show the structured lead and automation context.
+3. [GitHub source](https://github.com/FelipeFeerreira/vertice-realty) - technical detail and installation instructions.
 
 ## Short demonstration script
 

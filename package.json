@@ -18,7 +18,8 @@
     "db:translate-demo": "tsx prisma/localize-demo.ts",
     "db:setup": "prisma generate && prisma db push && tsx prisma/seed.ts",
     "test": "tsx --test tests/domain.test.ts",
-    "test:flows": "tsx tests/flows.ts"
+    "test:flows": "tsx tests/flows.ts",
+    "build:cloud": "node scripts/prepare-cloud.mjs && next build"
   },
   "dependencies": {
     "@prisma/client": "^6.8.2",

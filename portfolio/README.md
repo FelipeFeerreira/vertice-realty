@@ -14,4 +14,4 @@ The `images/` folder contains PNG captures of the actual application, plus a des
 | 08-automation.png | Qualified and nurture workflow visualization |
 | 09-mobile.png | Responsive experience |
 
-Use [UPWORK.md](UPWORK.md) for the title, role, description, skills and demonstration script. Upload the PNG files manually in your preferred order. The project is a fictional demonstration, with no invented client-performance claims.
+Use [UPWORK.md](UPWORK.md) for the title, role, description, skills and demonstration script. Use the recommended order in UPWORK.md: cover, homepage, concierge, CRM, search, property detail, booking, automation and mobile. The project is a fictional demonstration, with no invented client-performance claims.

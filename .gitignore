@@ -37,3 +37,6 @@ next-env.d.ts
 !.env.example
 /portfolio-preview/
 /test-results/
+
+# Generated PostgreSQL schema for cloud deployment
+/prisma/schema.cloud.prisma

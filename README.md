@@ -1,5 +1,7 @@
 # Vertice Realty
 
+[Live demo](https://vertice-realty.vercel.app) | [Agent dashboard](https://vertice-realty.vercel.app/dashboard?lead=lead-daniel) | [Upwork portfolio kit](portfolio/Upwork-portfolio-kit.zip)
+
 A boutique real estate experience with a working property concierge, deterministic lead qualification, viewing requests and an agent CRM demonstration. Built as an English-language portfolio project for a fictional Sao Paulo agency.
 
 ![Vertice Realty portfolio cover](portfolio/images/01-cover.png)
@@ -157,9 +159,15 @@ Visitors explicitly choose whether to receive matching homes and guides. Only op
 
 ## Deployment notes and practical limits
 
-This is a local portfolio demonstration, not a production CRM security boundary. The dashboard and its mutation endpoints intentionally have no staff authentication. Add authentication, authorization, rate limits, retention controls and verified webhook delivery before exposing real client data. The fictional contact links, testimonials and agents must be replaced for a real agency.
+This is a public portfolio demonstration, not a production CRM security boundary. The dashboard and its mutation endpoints intentionally have no staff authentication. Add authentication, authorization, rate limits, retention controls and verified webhook delivery before exposing real client data. The fictional contact links, testimonials and agents must be replaced for a real agency.
 
-Deploy to a persistent Node.js host if retaining SQLite. Ephemeral/serverless disks will not preserve this database. Moving to PostgreSQL requires updating the Prisma datasource provider and creating appropriate migrations, not only changing the URL. Static HTML export is unsupported. Listing photography loads from remote sources with a visual fallback when unavailable.
+### Vercel deployment
+
+The Vercel demonstration uses a dedicated Neon PostgreSQL database on its Free plan. Local development continues to use SQLite. `vercel.json` runs `npm run build:cloud`, which derives a PostgreSQL schema from the canonical SQLite model and generates the matching Prisma client before building Next.js. Schema generation does not reset or seed the database.
+
+For a fresh deployment, connect a new PostgreSQL database to the Vercel project as `DATABASE_URL`. In an isolated setup checkout, generate the cloud client with `node scripts/prepare-cloud.mjs`, apply the schema with `npx prisma db push --schema prisma/schema.cloud.prisma`, and seed that new, empty database once. Never seed over an existing database. Set `NEXT_PUBLIC_DEMO_MODE=true` in Vercel for the fictional-data notice. Metadata uses `NEXT_PUBLIC_SITE_URL` or Vercel's production hostname automatically.
+
+Use `npm run db:generate` to return to the SQLite client if switching a setup checkout back to local development. Keep cloud credentials out of Git. Retain a persistent Node.js host if deploying with SQLite instead. Static HTML export is unsupported. Listing photography loads from remote sources with a visual fallback when unavailable.
 
 ## Portfolio assets
 
