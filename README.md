@@ -174,3 +174,9 @@ Use `npm run db:generate` to return to the SQLite client if switching a setup ch
 See [portfolio/README.md](portfolio/README.md) for screenshots and [portfolio/UPWORK.md](portfolio/UPWORK.md) for English project copy. Captures use a separate database containing only fictional demo records.
 
 Vertice Realty is a fictional brand. This project demonstrates implementation capabilities and makes no claims of measured client business results.
+
+---
+
+## License
+
+MIT - see [LICENSE](LICENSE). You may use, modify and redistribute this code with attribution.
