@@ -6,6 +6,13 @@ A boutique real estate experience with a working property concierge, determinist
 
 ![Vertice Realty portfolio cover](portfolio/images/01-cover.png)
 
+| | |
+|:--|:--|
+| **Live demo** | [vertice-realty.vercel.app](https://vertice-realty.vercel.app) |
+| **Screenshots** | [portfolio](portfolio) |
+| **Stack** | Next.js · React · TypeScript · Prisma · PostgreSQL (Neon on Vercel) · SQLite locally · Zod |
+| **License** | MIT — [LICENSE](LICENSE) |
+
 ## The business problem
 
 A conventional inquiry form gives agents little context. Vertice collects a visitor's intent, preferred area, budget, timing and readiness before handoff. The system is designed to reduce manual qualification and give agents a useful first-conversation brief. No real-world conversion or revenue results are claimed.
@@ -176,6 +183,12 @@ See [portfolio/README.md](portfolio/README.md) for screenshots and [portfolio/UP
 Vertice Realty is a fictional brand. This project demonstrates implementation capabilities and makes no claims of measured client business results.
 
 ---
+
+## What I would do next
+
+- Add authentication and rate limits to the dashboard mutation endpoints.
+- Verify webhook delivery signatures end to end before connecting a real agency.
+- Replace the fictional agents and testimonials with real client content.
 
 ## License
 
